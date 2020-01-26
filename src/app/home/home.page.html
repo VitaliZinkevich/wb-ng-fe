@@ -10,35 +10,40 @@
 </ion-header>
 
 <ion-content>
-    <form #searchForm="ngForm" (ngSubmit)="logForm(searchForm)" novalidate>
+    <!-- [formGroup]="searchForm" -->
+    <form [formGroup]="searchForm" (ngSubmit)="logForm(searchForm)">
         <ion-row>
             <ion-col
                 ><ion-item>
+                    <!-- formControlName="dateStartFrom" -->
+                    <!-- [(ngModel)]="searchForm.dateStartFrom"
+                        ngControl="dateStartFrom" -->
                     <input
+                        formControlName="dateStartFrom"
                         class="form-control"
+                        name="dateStartFrom"
                         placeholder="Заезд с"
                         bsDatepicker
-                        [(ngModel)]="searchForm.dateStartFrom"
-                        name="dateStartFrom"
-                        ngControl="dateStartFrom"
                         placement="bottom"
                     /> </ion-item
             ></ion-col>
             <ion-col
                 ><ion-item>
+                    <!-- formControlName="dateStartTo" -->
+                    <!-- [(ngModel)]="searchForm.dateStartTo"
+                    ngControl="dateStartTo" -->
                     <input
                         class="form-control"
+                        formControlName="dateStartTo"
+                        name="dateStartTo"
                         placeholder="Заезд по"
                         bsDatepicker
-                        [(ngModel)]="searchForm.dateStartTo"
-                        name="dateStartTo"
-                        ngControl="dateStartTo"
                         placement="bottom"
                     /> </ion-item
             ></ion-col>
         </ion-row>
 
-        <ion-row>
+        <!-- <ion-row>
             <ion-col>
                 <ion-item>
                     <ion-label>Взрослых</ion-label>
@@ -198,12 +203,14 @@
                     [searchForm]="searchForm"
                 ></app-hotel-list>
             </ion-col>
-        </ion-row>
-        <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button>
-                <ion-icon name="arrow-dropleft"></ion-icon>
-            </ion-fab-button>
-        </ion-fab> -->
+        </ion-row> -->
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-item (click)="priceShow()">
+                <ion-fab-button>
+                    <ion-icon name="arrow-dropleft"></ion-icon>
+                </ion-fab-button>
+            </ion-item>
+        </ion-fab>
     </form>
     <!-- <app-hotel-list [hotels]="hotels"></app-hotel-list> </ion-content> -->
 </ion-content>
