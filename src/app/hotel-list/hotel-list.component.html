@@ -1,0 +1,17 @@
+<ion-list>
+    <ion-item onclick="" *ngFor="let hotel of filtredHotels; let i = index">
+        <ion-checkbox
+            (ionChange)="selectChange(hotel._id)"
+            slot="end"
+            color="primary"
+        ></ion-checkbox>
+        <ion-avatar slot="start">
+            <img
+                [src]="
+                    hotel.description.fotos[0] ? hotel.description.fotos[0] : ''
+                "
+            />
+        </ion-avatar>
+        <ion-label>{{ hotel.name }}</ion-label>
+    </ion-item>
+</ion-list>

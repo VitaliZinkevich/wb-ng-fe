@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            Home
+            Поиск Санатория
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
                 ><ion-item>
                     <input
                         class="form-control"
-                        placeholder="Datepicker"
+                        placeholder="Заезд с"
                         bsDatepicker
                         [(ngModel)]="searchForm.dateStartFrom"
                         name="dateStartFrom"
@@ -28,7 +28,7 @@
                 ><ion-item>
                     <input
                         class="form-control"
-                        placeholder="Datepicker"
+                        placeholder="Заезд по"
                         bsDatepicker
                         [(ngModel)]="searchForm.dateStartTo"
                         name="dateStartTo"
@@ -38,51 +38,172 @@
             ></ion-col>
         </ion-row>
 
-        <!-- <ion-item>
-            <ion-label>Todo</ion-label>
-            <ion-input
-                type="text"
-                required
-                [(ngModel)]="searchForm.title"
-                name="title"
-                ngControl="title"
-            ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Description</ion-label>
-            <ion-textarea
-                [(ngModel)]="searchForm.description"
-                ngControl="description"
-                name="description"
-            ></ion-textarea>
-        </ion-item>
-        <ion-item>
-            <ion-label>Toppings</ion-label>
-            <ion-select
-                [(ngModel)]="searchForm.multiSelect"
-                ngControl="multiSelect"
-                name="multiSelect"
-                multiple="true"
-                cancelText="Nah"
-                okText="Okay!"
-            >
-                <ion-select-option value="pepperoni"
-                    >Pepperoni</ion-select-option
-                >
-                <ion-select-option value="pineapple"
-                    >Pineapple</ion-select-option
-                >
-                <ion-select-option value="sausage">Sausage</ion-select-option>
-                <ion-select-option value="Spinach">Spinach</ion-select-option>
-            </ion-select>
-            
-        </ion-item> -->
-        <!-- <button type="submit" ion-button>Add Todo</button> -->
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Взрослых</ion-label>
+                    <ion-select
+                        [(ngModel)]="searchForm.adults"
+                        ngControl="adults"
+                        name="adults"
+                        cancelText="Отмена"
+                        okText="Выбрать"
+                        value="1"
+                    >
+                        <ion-select-option value="1"
+                            >1 взрослый</ion-select-option
+                        >
+                        <ion-select-option value="2"
+                            >2 взрослых</ion-select-option
+                        >
+                        <ion-select-option value="3"
+                            >3 взрослых</ion-select-option
+                        >
+                        <ion-select-option value="4"
+                            >4 взрослых</ion-select-option
+                        >
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Детей</ion-label>
+                    <ion-select
+                        [(ngModel)]="searchForm.children"
+                        ngControl="children"
+                        name="children"
+                        cancelText="Отмена"
+                        okText="Выбрать"
+                    >
+                        <ion-select-option value="1"
+                            >1 ребенок</ion-select-option
+                        >
+                        <ion-select-option value="2"
+                            >2 ребенка</ion-select-option
+                        >
+                        <ion-select-option value="3"
+                            >3 ребенка</ion-select-option
+                        >
+                        <ion-select-option value="4"
+                            >4 ребенка</ion-select-option
+                        >
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Звездность</ion-label>
+                    <ion-select
+                        [(ngModel)]="searchForm.stars"
+                        ngControl="stars"
+                        name="stars"
+                        multiple="true"
+                        cancelText="Отмена"
+                        okText="Выбрать"
+                    >
+                        <ion-select-option value="2">
+                            2 звезды</ion-select-option
+                        >
+                        <ion-select-option value="3"
+                            >3 звезды</ion-select-option
+                        >
+                        <ion-select-option value="4"
+                            >4 звезды</ion-select-option
+                        >
+                        <ion-select-option value="5">5 звезд</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Местонахождения</ion-label>
+                    <ion-select
+                        [(ngModel)]="searchForm.location"
+                        ngControl="location"
+                        name="location"
+                        multiple="true"
+                        cancelText="Отмена"
+                        okText="Выбрать"
+                    >
+                        <ion-select-option value="7">Минск</ion-select-option>
+                        <ion-select-option value="1"
+                            >Брестская область</ion-select-option
+                        >
+                        <ion-select-option value="2"
+                            >Витебская область</ion-select-option
+                        >
+                        <ion-select-option value="3"
+                            >Гомельская область</ion-select-option
+                        >
+                        <ion-select-option value="4"
+                            >Гроднекнская область</ion-select-option
+                        >
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Ночей</ion-label>
+                    <ion-select
+                        [(ngModel)]="searchForm.nights"
+                        ngControl="nights"
+                        name="nights"
+                        multiple="true"
+                        cancelText="Отмена"
+                        okText="Выбрать"
+                    >
+                        <ion-select-option value="5">
+                            5 ночей</ion-select-option
+                        >
+                        <ion-select-option value="7">7 ночей</ion-select-option>
+                        <ion-select-option value="9">9 ночей</ion-select-option>
+                        <ion-select-option value="11"
+                            >11 ночей</ion-select-option
+                        >
+                        <ion-select-option value="14"
+                            >14 ночей</ion-select-option
+                        >
+                        <ion-select-option value="18"
+                            >18 ночей</ion-select-option
+                        >
+                        <ion-select-option value="21"
+                            >21 ночь</ion-select-option
+                        >
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col
+                ><ion-searchbar
+                    [(ngModel)]="searchForm.searchString"
+                    ngControl="searchString"
+                    name="searchString"
+                    showCancelButton="never"
+                ></ion-searchbar
+            ></ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <app-hotel-list
+                    [filtredHotels]="filtredHotels"
+                    [searchForm]="searchForm"
+                ></app-hotel-list>
+            </ion-col>
+        </ion-row>
+        <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
             <ion-fab-button>
                 <ion-icon name="arrow-dropleft"></ion-icon>
             </ion-fab-button>
-        </ion-fab>
+        </ion-fab> -->
     </form>
     <!-- <app-hotel-list [hotels]="hotels"></app-hotel-list> </ion-content> -->
 </ion-content>

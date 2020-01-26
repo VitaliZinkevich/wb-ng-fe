@@ -5,6 +5,7 @@
         "no-empty": false,
         "no-submodule-imports": false,
         "semicolon": true,
-        "no-console": false
+        "no-console": false,
+        "prefer-for-of": false
     }
 }

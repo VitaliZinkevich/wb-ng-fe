@@ -7,18 +7,25 @@ export class SearchFormService {
     private searchForm = {
         dateStartFrom: '',
         dateStartTo: '',
-        nights: ['1'],
-        stars: 'any',
-        location: '',
+        adults: 1,
+        children: 0,
+        nights: [],
+        stars: [],
+        location: [],
         searchString: '',
+        selectedHotels: [],
     };
 
     private hotels: any[];
 
     constructor() {}
 
-    public getSearchForm() {
+    public getCleanSearchForm() {
         const emptyFormCopy = JSON.parse(JSON.stringify(this.searchForm));
         return emptyFormCopy;
+    }
+
+    public getSearchForm() {
+        return this.searchForm;
     }
 }
