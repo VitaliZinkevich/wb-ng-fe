@@ -1,13 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { HotelListComponent } from './../hotel-list/hotel-list.component';
-import { HotelsService } from './../services/hotels.service';
-import { SearchFormService } from './../services/search-form.service';
-import { HomePage } from './home.page';
+import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router'
+import { IonicModule } from '@ionic/angular'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { HotelListComponent } from './../hotel-list/hotel-list.component'
+
+import { HomePage } from './home.page'
 
 @NgModule({
     imports: [
@@ -24,6 +23,6 @@ import { HomePage } from './home.page';
         ]),
     ],
     declarations: [HomePage, HotelListComponent],
-    providers: [SearchFormService, HotelsService],
+    providers: [],
 })
 export class HomePageModule {}

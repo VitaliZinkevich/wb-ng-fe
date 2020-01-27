@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { from, Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { from, Observable, of, BehaviorSubject } from 'rxjs'
 @Injectable({
     providedIn: 'root',
 })
 export class SearchFormService {
-    public savedForm;
-    private searchForm = new FormGroup({
+    private searchFormMain = new FormGroup({
         dateStartFrom: new FormControl('', [
             Validators.required,
             // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
@@ -15,7 +14,50 @@ export class SearchFormService {
             Validators.required,
             // Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
         ]),
-    });
+        adults: new FormControl('2', [
+            // Validators.required,
+            // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+        ]),
+        children: new FormControl('', [
+            // Validators.required,
+            // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+        ]),
+        nights: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+        stars: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+        location: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+        searchString: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+        selectedHotels: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+    })
     // private searchForm = {
     //     dateStartFrom: '',
     //     dateStartTo: '',
@@ -27,20 +69,12 @@ export class SearchFormService {
     //     searchString: '',
     //     selectedHotels: [],
     // };
-
-    private hotels: any[];
-
     constructor() {}
 
     public getSearchForm() {
-        console.log(this.searchForm);
-        return this.searchForm;
+        return this.searchFormMain
     }
-
-    public saveForm(values) {
-        this.savedForm = values;
-    }
-    public getSavedForm() {
-        return this.savedForm;
+    public getSearchFormV() {
+        return this.searchFormMain
     }
 }

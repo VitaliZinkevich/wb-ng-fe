@@ -21,7 +21,6 @@
                     <input
                         formControlName="dateStartFrom"
                         class="form-control"
-                        name="dateStartFrom"
                         placeholder="Заезд с"
                         bsDatepicker
                         placement="bottom"
@@ -35,7 +34,6 @@
                     <input
                         class="form-control"
                         formControlName="dateStartTo"
-                        name="dateStartTo"
                         placeholder="Заезд по"
                         bsDatepicker
                         placement="bottom"
@@ -43,17 +41,14 @@
             ></ion-col>
         </ion-row>
 
-        <!-- <ion-row>
+        <ion-row>
             <ion-col>
                 <ion-item>
                     <ion-label>Взрослых</ion-label>
                     <ion-select
-                        [(ngModel)]="searchForm.adults"
-                        ngControl="adults"
-                        name="adults"
+                        formControlName="adults"
                         cancelText="Отмена"
                         okText="Выбрать"
-                        value="1"
                     >
                         <ion-select-option value="1"
                             >1 взрослый</ion-select-option
@@ -74,9 +69,7 @@
                 <ion-item>
                     <ion-label>Детей</ion-label>
                     <ion-select
-                        [(ngModel)]="searchForm.children"
-                        ngControl="children"
-                        name="children"
+                        formControlName="children"
                         cancelText="Отмена"
                         okText="Выбрать"
                     >
@@ -102,9 +95,7 @@
                 <ion-item>
                     <ion-label>Звездность</ion-label>
                     <ion-select
-                        [(ngModel)]="searchForm.stars"
-                        ngControl="stars"
-                        name="stars"
+                        formControlName="stars"
                         multiple="true"
                         cancelText="Отмена"
                         okText="Выбрать"
@@ -126,9 +117,7 @@
                 <ion-item>
                     <ion-label>Местонахождения</ion-label>
                     <ion-select
-                        [(ngModel)]="searchForm.location"
-                        ngControl="location"
-                        name="location"
+                        formControlName="location"
                         multiple="true"
                         cancelText="Отмена"
                         okText="Выбрать"
@@ -156,9 +145,7 @@
                 <ion-item>
                     <ion-label>Ночей</ion-label>
                     <ion-select
-                        [(ngModel)]="searchForm.nights"
-                        ngControl="nights"
-                        name="nights"
+                        formControlName="nights"
                         multiple="true"
                         cancelText="Отмена"
                         okText="Выбрать"
@@ -188,9 +175,7 @@
         <ion-row>
             <ion-col
                 ><ion-searchbar
-                    [(ngModel)]="searchForm.searchString"
-                    ngControl="searchString"
-                    name="searchString"
+                    formControlName="searchString"
                     showCancelButton="never"
                 ></ion-searchbar
             ></ion-col>
@@ -203,14 +188,17 @@
                     [searchForm]="searchForm"
                 ></app-hotel-list>
             </ion-col>
-        </ion-row> -->
+        </ion-row>
         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-item (click)="priceShow()">
-                <ion-fab-button>
-                    <ion-icon name="arrow-dropleft"></ion-icon>
-                </ion-fab-button>
+            <ion-item
+                [disabled]="!searchForm.valid"
+                color="primary"
+                lines="none"
+                button
+                (click)="priceShow()"
+            >
+                <ion-icon name="arrow-dropleft"></ion-icon>
             </ion-item>
         </ion-fab>
     </form>
-    <!-- <app-hotel-list [hotels]="hotels"></app-hotel-list> </ion-content> -->
 </ion-content>
