@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchFormService } from './../services/search-form.service';
-import { HotelsService } from '../services/hotels.service';
 import { Router } from '@angular/router';
-import { OrderService } from '../services/order.service';
 import * as moment from 'moment';
+import { OrderService } from '../services/order.service';
+import { SearchFormService } from './../services/search-form.service';
 
 @Component({
     selector: 'app-list',
@@ -13,7 +12,7 @@ import * as moment from 'moment';
 export class ListPage implements OnInit {
     public searchData;
     public hotelsForRender;
-    nights;
+    public nights;
 
     constructor(
         private searchFormService: SearchFormService,
@@ -28,7 +27,7 @@ export class ListPage implements OnInit {
             moment(this.searchData.dateFrom),
             'days'
         );
-        let accomodatioFromForm = `${this.searchData.adults}+${this.searchData.children}`;
+        const accomodatioFromForm = `${this.searchData.adults}+${this.searchData.children}`;
         if (this.searchData.selectedHotels.length) {
             this.hotelsForRender = this.hotelsForRender.filter(hotel => {
                 if (this.searchData.selectedHotels.indexOf(hotel._id) > -1) {
@@ -79,7 +78,7 @@ export class ListPage implements OnInit {
     }
 
     public bookThis(hotel, room) {
-        let order = {
+        const order = {
             hotel,
             room,
             nights: this.nights,

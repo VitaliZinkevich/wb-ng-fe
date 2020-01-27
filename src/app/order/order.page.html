@@ -1,6 +1,11 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Order</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Order
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -29,28 +34,52 @@
     <form [formGroup]="form">
         <ion-row>
             <ion-col>
-                <ion-item>
-                    <ion-input
-                        formControlName="tel"
-                        placeholder="Enter Input"
-                    ></ion-input>
-                </ion-item>
-            </ion-col>
-            <ion-col>
                 <ng-container formArrayName="touristsData">
                     <ion-item
                         *ngFor="let tourist of tourists.controls; let i = index"
                     >
-                        <ion-label>{{i}}</ion-label>
+                        Турист {{i}}
                         <ion-item [formGroupName]="i">
-                            <ion-input formControlName="firstName"
-                                >1
+                            <ion-item></ion-item>
+                            <ion-input
+                                formControlName="firstName"
+                                placeholder="Имя"
+                            >
                             </ion-input>
-                            <ion-input formControlName="lastName"> 2</ion-input>
+                            <ion-input
+                                placeholder="Фамилия"
+                                formControlName="lastName"
+                            >
+                            </ion-input>
                         </ion-item>
                     </ion-item>
                 </ng-container>
             </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-input
+                        formControlName="email"
+                        placeholder="Email"
+                    ></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-input
+                        formControlName="tel"
+                        placeholder="Телефон"
+                    ></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-item button color="primary" (click)="saveOrder()">
+                Оформить</ion-item
+            >
         </ion-row>
     </form>
 </ion-content>

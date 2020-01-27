@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../services/order.service';
-import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-order',
@@ -8,16 +8,19 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
     styleUrls: ['./order.page.scss'],
 })
 export class OrderPage implements OnInit {
-    preOrder;
-    form;
-    tourists;
+    public preOrder;
+    public form;
+    public tourists;
     constructor(private orderService: OrderService) {
         this.form = this.orderService.getOrderForm();
         this.tourists = this.form.get('touristsData') as FormArray;
-        console.log(this.tourists);
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.preOrder = this.orderService.getPreOrder();
+    }
+
+    public saveOrder() {
+        this.orderService.saveOrder();
     }
 }
