@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { from, Observable, of, BehaviorSubject } from 'rxjs'
+import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { from, Observable, of, BehaviorSubject } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
@@ -14,16 +14,16 @@ export class SearchFormService {
             Validators.required,
             // Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
         ]),
-        adults: new FormControl('2', [
+        adults: new FormControl('1', [
             // Validators.required,
             // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
         ]),
-        children: new FormControl('', [
+        children: new FormControl('0', [
             // Validators.required,
             // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
         ]),
         nights: new FormControl(
-            [],
+            ['7'],
             [
                 // Validators.required,
                 // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
@@ -43,13 +43,10 @@ export class SearchFormService {
                 // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
             ]
         ),
-        searchString: new FormControl(
-            [],
-            [
-                // Validators.required,
-                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
-            ]
-        ),
+        searchString: new FormControl('', [
+            // Validators.required,
+            // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+        ]),
         selectedHotels: new FormControl(
             [],
             [
@@ -57,24 +54,20 @@ export class SearchFormService {
                 // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
             ]
         ),
-    })
-    // private searchForm = {
-    //     dateStartFrom: '',
-    //     dateStartTo: '',
-    //     adults: 1,
-    //     children: 0,
-    //     nights: [],
-    //     stars: [],
-    //     location: [],
-    //     searchString: '',
-    //     selectedHotels: [],
-    // };
+        filtredHotelsForm: new FormControl(
+            [],
+            [
+                // Validators.required,
+                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
+            ]
+        ),
+    });
     constructor() {}
 
     public getSearchForm() {
-        return this.searchFormMain
+        return this.searchFormMain;
     }
     public getSearchFormV() {
-        return this.searchFormMain
+        return this.searchFormMain;
     }
 }

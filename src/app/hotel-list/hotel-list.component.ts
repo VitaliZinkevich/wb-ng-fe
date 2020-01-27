@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-hotel-list',
@@ -6,23 +6,22 @@ import { Component, Input, OnInit } from '@angular/core'
     styleUrls: ['./hotel-list.component.scss'],
 })
 export class HotelListComponent implements OnInit {
-    @Input() public filtredHotels: any[]
-    @Input() public searchForm
+    @Input() public filtredHotels: any[];
+    @Input() public searchForm;
 
-    public selectedHotelsArray = []
+    public selectedHotelsArray = [];
     constructor() {}
 
     public ngOnInit() {}
 
     public selectChange(data) {
-        console.log(this.selectedHotelsArray.indexOf(data))
         if (this.selectedHotelsArray.indexOf(data) > -1) {
             this.selectedHotelsArray = this.selectedHotelsArray.filter(id => {
-                return id !== data
-            })
+                return id !== data;
+            });
         } else {
-            this.selectedHotelsArray.push(data)
+            this.selectedHotelsArray.push(data);
         }
-        this.searchForm.selectedHotels = this.selectedHotelsArray
+        this.searchForm.value.selectedHotels = this.selectedHotelsArray;
     }
 }

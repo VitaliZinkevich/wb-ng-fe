@@ -1,27 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            List
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+    <ion-list *ngFor="let hotel of hotelsForRender">
+        <ion-list-header>
+            <ion-label>{{hotel.name}}</ion-label>
+            <ion-label
+                >{{searchData.dateStartFrom |
+                date:"fullDate"}}-{{searchData.dateStartTo |
+                date:"fullDate"}}</ion-label
+            >
+        </ion-list-header>
+        <ion-item *ngFor="let night of searchData.nights">
+            <ion-item>Ночей {{night}} </ion-item>
+            <ion-list>
+                <ion-item
+                    *ngFor="let room of hotel.rooms"
+                    (click)="bookThis(hotel, night, room)"
+                >
+                    <!-- <ion-avatar slot="start">
+                        <img
+                            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                        />
+                    </ion-avatar> -->
+                    <ion-item>{{room.name}} </ion-item>
+                    <ion-item>{{room.price.adult}} </ion-item>
+                    <ion-item>{{room.price.children}} </ion-item>
+                </ion-item>
+            </ion-list>
+        </ion-item>
+    </ion-list>
 </ion-content>

@@ -184,19 +184,14 @@
         <ion-row>
             <ion-col>
                 <app-hotel-list
-                    [filtredHotels]="filtredHotels"
+                    [filtredHotels]="searchForm.value.filtredHotelsForm"
                     [searchForm]="searchForm"
                 ></app-hotel-list>
             </ion-col>
         </ion-row>
         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-item
-                [disabled]="!searchForm.valid"
-                color="primary"
-                lines="none"
-                button
-                (click)="priceShow()"
-            >
+            <!-- [disabled]="!searchForm.valid" -->
+            <ion-item color="primary" lines="none" button (click)="priceShow()">
                 <ion-icon name="arrow-dropleft"></ion-icon>
             </ion-item>
         </ion-fab>
