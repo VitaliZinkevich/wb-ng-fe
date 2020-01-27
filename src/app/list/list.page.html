@@ -14,28 +14,23 @@
         <ion-list-header>
             <ion-label>{{hotel.name}}</ion-label>
             <ion-label
-                >{{searchData.dateStartFrom |
-                date:"fullDate"}}-{{searchData.dateStartTo |
-                date:"fullDate"}}</ion-label
-            >
+                >C {{searchData.dateFrom | date:"fullDate"}} по
+                {{searchData.dateTo | date:"fullDate"}}. Проживание {{nights}}
+                ночей
+            </ion-label>
         </ion-list-header>
-        <ion-item *ngFor="let night of searchData.nights">
-            <ion-item>Ночей {{night}} </ion-item>
-            <ion-list>
-                <ion-item
-                    *ngFor="let room of hotel.rooms"
-                    (click)="bookThis(hotel, night, room)"
-                >
-                    <!-- <ion-avatar slot="start">
-                        <img
-                            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                        />
-                    </ion-avatar> -->
-                    <ion-item>{{room.name}} </ion-item>
-                    <ion-item>{{room.price.adult}} </ion-item>
-                    <ion-item>{{room.price.children}} </ion-item>
-                </ion-item>
-            </ion-list>
-        </ion-item>
+        <ion-list>
+            <ion-item
+                *ngFor="let room of hotel.rooms"
+                (click)="bookThis(hotel, room)"
+            >
+                <ion-item>{{room.name}} </ion-item>
+                <ion-item>Взрослых {{searchData.adults}} </ion-item>
+                <ion-item>Детей {{searchData.children}} </ion-item>
+                <ion-item>{{room.price.adult}} </ion-item>
+                <ion-item>{{room.price.children}} </ion-item>
+                <ion-item>Стоимость {{room.totalPrice}} </ion-item>
+            </ion-item>
+        </ion-list>
     </ion-list>
 </ion-content>

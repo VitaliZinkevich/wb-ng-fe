@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            Поиск Санатория
+            Поиск
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -15,26 +15,20 @@
         <ion-row>
             <ion-col
                 ><ion-item>
-                    <!-- formControlName="dateStartFrom" -->
-                    <!-- [(ngModel)]="searchForm.dateStartFrom"
-                        ngControl="dateStartFrom" -->
                     <input
-                        formControlName="dateStartFrom"
+                        formControlName="dateFrom"
                         class="form-control"
-                        placeholder="Заезд с"
+                        placeholder="Заезд"
                         bsDatepicker
                         placement="bottom"
                     /> </ion-item
             ></ion-col>
             <ion-col
                 ><ion-item>
-                    <!-- formControlName="dateStartTo" -->
-                    <!-- [(ngModel)]="searchForm.dateStartTo"
-                    ngControl="dateStartTo" -->
                     <input
                         class="form-control"
-                        formControlName="dateStartTo"
-                        placeholder="Заезд по"
+                        formControlName="dateTo"
+                        placeholder="Выезд"
                         bsDatepicker
                         placement="bottom"
                     /> </ion-item
@@ -134,38 +128,6 @@
                         >
                         <ion-select-option value="4"
                             >Гроднекнская область</ion-select-option
-                        >
-                    </ion-select>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col>
-                <ion-item>
-                    <ion-label>Ночей</ion-label>
-                    <ion-select
-                        formControlName="nights"
-                        multiple="true"
-                        cancelText="Отмена"
-                        okText="Выбрать"
-                    >
-                        <ion-select-option value="5">
-                            5 ночей</ion-select-option
-                        >
-                        <ion-select-option value="7">7 ночей</ion-select-option>
-                        <ion-select-option value="9">9 ночей</ion-select-option>
-                        <ion-select-option value="11"
-                            >11 ночей</ion-select-option
-                        >
-                        <ion-select-option value="14"
-                            >14 ночей</ion-select-option
-                        >
-                        <ion-select-option value="18"
-                            >18 ночей</ion-select-option
-                        >
-                        <ion-select-option value="21"
-                            >21 ночь</ion-select-option
                         >
                     </ion-select>
                 </ion-item>

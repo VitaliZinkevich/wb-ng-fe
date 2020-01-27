@@ -3,6 +3,7 @@ import { SearchFormService } from './../services/search-form.service';
 import { HotelsService } from '../services/hotels.service';
 import { Router } from '@angular/router';
 import { OrderService } from '../services/order.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-list',
@@ -12,6 +13,7 @@ import { OrderService } from '../services/order.service';
 export class ListPage implements OnInit {
     public searchData;
     public hotelsForRender;
+    nights;
 
     constructor(
         private searchFormService: SearchFormService,
@@ -22,7 +24,10 @@ export class ListPage implements OnInit {
     public ngOnInit() {
         this.searchData = this.searchFormService.getSearchForm().value;
         this.hotelsForRender = this.searchData.filtredHotelsForm;
-
+        this.nights = moment(this.searchData.dateTo).diff(
+            moment(this.searchData.dateFrom),
+            'days'
+        );
         let accomodatioFromForm = `${this.searchData.adults}+${this.searchData.children}`;
         if (this.searchData.selectedHotels.length) {
             this.hotelsForRender = this.hotelsForRender.filter(hotel => {
@@ -61,16 +66,29 @@ export class ListPage implements OnInit {
                 }
             });
         }
+
+        this.hotelsForRender.forEach(hotel => {
+            hotel.rooms.forEach(room => {
+                room.totalPrice =
+                    +this.searchData.adults * +this.nights * +room.price.adult;
+                // if (this.searchData.children){
+                //     room.totalPrice+= +this.searchData.children * this.nights * +room.price.children;
+                // }
+            });
+        });
     }
 
-    public bookThis(hotel, night, room) {
+    public bookThis(hotel, room) {
         let order = {
-            night: night,
-            adults: 'asd',
-            children: 'asdas',
-            start: 'asd',
+            hotel,
+            room,
+            nights: this.nights,
+            adults: this.searchData.adults,
+            children: this.searchData.children,
+            dateFrom: this.searchData.dateFrom,
+            dateTo: this.searchData.dateTo,
         };
-        this.orderService.savePreOrder({ hotel, night, room });
+        this.orderService.savePreOrder(order);
         this.router.navigate(['/order']);
     }
 }

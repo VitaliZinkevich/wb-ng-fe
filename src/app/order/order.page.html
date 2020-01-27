@@ -4,4 +4,53 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+    <ion-item>
+        <ion-label>
+            Проживание {{preOrder.nights}} ночей
+        </ion-label>
+        <ion-label>
+            C {{preOrder.dateFrom | date:"fullDate"}} по {{preOrder.dateTo |
+            date:"fullDate"}}.
+        </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label> Санаторий {{preOrder.hotel.name}} </ion-label>
+        <ion-label> Номер {{preOrder.room.name}} </ion-label>
+        <ion-label>
+            Для {{preOrder.adults}} взрослых и {{preOrder.children}} детей
+        </ion-label>
+    </ion-item>
+
+    <ion-item>
+        Итого {{preOrder.room.totalPrice}} RUB
+    </ion-item>
+
+    <form [formGroup]="form">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-input
+                        formControlName="tel"
+                        placeholder="Enter Input"
+                    ></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ng-container formArrayName="touristsData">
+                    <ion-item
+                        *ngFor="let tourist of tourists.controls; let i = index"
+                    >
+                        <ion-label>{{i}}</ion-label>
+                        <ion-item [formGroupName]="i">
+                            <ion-input formControlName="firstName"
+                                >1
+                            </ion-input>
+                            <ion-input formControlName="lastName"> 2</ion-input>
+                        </ion-item>
+                    </ion-item>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

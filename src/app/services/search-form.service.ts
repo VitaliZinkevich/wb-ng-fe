@@ -6,11 +6,11 @@ import { from, Observable, of, BehaviorSubject } from 'rxjs';
 })
 export class SearchFormService {
     private searchFormMain = new FormGroup({
-        dateStartFrom: new FormControl('', [
+        dateFrom: new FormControl('', [
             Validators.required,
             // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
         ]),
-        dateStartTo: new FormControl('', [
+        dateTo: new FormControl('', [
             Validators.required,
             // Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
         ]),
@@ -22,13 +22,6 @@ export class SearchFormService {
             // Validators.required,
             // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
         ]),
-        nights: new FormControl(
-            ['7'],
-            [
-                // Validators.required,
-                // Validators.pattern('[a-zA-z0-9_.]+@[a-zA-Z]+.[a-zA-Z]+'),
-            ]
-        ),
         stars: new FormControl(
             [],
             [
