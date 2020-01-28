@@ -13,7 +13,9 @@ export class OrderPage implements OnInit {
     public tourists;
     constructor(private orderService: OrderService) {
         this.form = this.orderService.getOrderForm();
-        this.tourists = this.form.get('touristsData') as FormArray;
+        if (this.form) {
+            this.tourists = this.form.get('touristsData') as FormArray;
+        }
     }
 
     public ngOnInit() {

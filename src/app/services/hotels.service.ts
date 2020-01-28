@@ -7,7 +7,7 @@ import { shareReplay, share } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class HotelsService {
-    private cache$: Observable<Object>;
+    private cache$: Observable<{}>;
     constructor(private http: HttpClient) {}
     get api() {
         if (!this.cache$) {

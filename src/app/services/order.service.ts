@@ -29,12 +29,14 @@ export class OrderService {
             firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
         });
-        const tourists = this.orderForm.get('touristsData') as FormArray;
-        const n = +this.currentOrder.adults + +this.currentOrder.children;
-        for (let i = 0; i < n; i++) {
-            tourists.push(data);
+        if (this.currentOrder) {
+            const tourists = this.orderForm.get('touristsData') as FormArray;
+            const n = +this.currentOrder.adults + +this.currentOrder.children;
+            for (let i = 0; i < n; i++) {
+                tourists.push(data);
+            }
+            return this.orderForm;
         }
-        return this.orderForm;
     }
     public saveOrder() {
         console.log(this.orderForm.value);
