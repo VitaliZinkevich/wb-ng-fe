@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{hotel.name}}, {{hotel.region}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="hotel">
+    <ion-item>{{hotel.name}}</ion-item>
+    <ion-item>{{hotel.description.text}}</ion-item>
+    <ion-item>Номера:</ion-item>
+    <ion-item *ngFor="let room of hotel.rooms">
+        <ion-item (click)="roomDetailes(room)">
+            <ion-item>{{room.name}}</ion-item>
+            <ion-item>{{room.accomodation}}</ion-item>
+        </ion-item>
+    </ion-item>
+    <ion-item *ngFor="let foto of hotel.description.fotos">
+        <ion-img [src]="foto"></ion-img>
+    </ion-item>
+    <ion-item></ion-item>
+</ion-content>

@@ -12,20 +12,20 @@ import { Platform } from '@ionic/angular';
 export class AppComponent {
     public appPages = [
         {
-            title: 'Home',
+            title: 'Поиск',
             url: '/home',
-            icon: 'home',
+            icon: 'search',
         },
-        {
-            title: 'List',
-            url: '/list',
-            icon: 'list',
-        },
-        {
-            title: 'Order',
-            url: '/order',
-            icon: 'list',
-        },
+        // {
+        //     title: 'List',
+        //     url: '/list',
+        //     icon: 'list',
+        // },
+        // {
+        //     title: 'Order',
+        //     url: '/order',
+        //     icon: 'list',
+        // },
     ];
 
     constructor(

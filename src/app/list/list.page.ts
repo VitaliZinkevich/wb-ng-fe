@@ -90,4 +90,8 @@ export class ListPage implements OnInit {
         this.orderService.savePreOrder(order);
         this.router.navigate(['/order']);
     }
+
+    roomDetailes(room) {
+        this.router.navigate([`/room-detailes/${room._id}`]);
+    }
 }

@@ -16,11 +16,34 @@ const routes: Routes = [
         path: 'list',
         loadChildren: () =>
             import('./list/list.module').then(m => m.ListPageModule),
-    },  {
-    path: 'order',
-    loadChildren: () => import('./order/order.module').then( m => m.OrderPageModule)
-  },
+    },
+    {
+        path: 'order',
+        loadChildren: () =>
+            import('./order/order.module').then(m => m.OrderPageModule),
+    },
+    {
+        path: 'detailes/:id',
+        loadChildren: () =>
+            import('./detailes/detailes.module').then(
+                m => m.DetailesPageModule
+            ),
+    },
+    {
+        path: 'room-detailes/:roomId',
+        loadChildren: () =>
+            import('./room-detailes/room-detailes.module').then(
+                m => m.RoomDetailesPageModule
+            ),
+    },
 
+    {
+        path: 'room-detailes',
+        loadChildren: () =>
+            import('./room-detailes/room-detailes.module').then(
+                m => m.RoomDetailesPageModule
+            ),
+    },
 ];
 
 @NgModule({

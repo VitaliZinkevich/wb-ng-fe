@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../services/order.service';
 
@@ -7,7 +7,7 @@ import { OrderService } from '../services/order.service';
     templateUrl: './order.page.html',
     styleUrls: ['./order.page.scss'],
 })
-export class OrderPage implements OnInit {
+export class OrderPage implements OnInit, OnDestroy {
     public preOrder;
     public form;
     public tourists;
@@ -20,6 +20,10 @@ export class OrderPage implements OnInit {
 
     public ngOnInit() {
         this.preOrder = this.orderService.getPreOrder();
+    }
+
+    public ngOnDestroy() {
+        this.form = null;
     }
 
     public saveOrder() {

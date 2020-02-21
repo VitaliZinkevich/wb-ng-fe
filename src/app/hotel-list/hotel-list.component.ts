@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-hotel-list',
@@ -10,7 +11,7 @@ export class HotelListComponent implements OnInit {
     @Input() public searchForm;
 
     public selectedHotelsArray = [];
-    constructor() {}
+    constructor(private router: Router) {}
 
     public ngOnInit() {}
 
@@ -23,5 +24,8 @@ export class HotelListComponent implements OnInit {
             this.selectedHotelsArray.push(data);
         }
         this.searchForm.value.selectedHotels = this.selectedHotelsArray;
+    }
+    public detailesView(id) {
+        this.router.navigate([`/detailes/${id}`]);
     }
 }

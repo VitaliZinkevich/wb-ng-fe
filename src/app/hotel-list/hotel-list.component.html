@@ -1,17 +1,23 @@
 <ion-list>
-    <ion-item onclick="" *ngFor="let hotel of filtredHotels; let i = index">
-        <ion-checkbox
-            (ionChange)="selectChange(hotel._id)"
-            slot="end"
-            color="primary"
-        ></ion-checkbox>
-        <ion-avatar slot="start">
-            <img
-                [src]="
-                    hotel.description.fotos[0] ? hotel.description.fotos[0] : ''
-                "
-            />
-        </ion-avatar>
-        <ion-label>{{ hotel.name }}</ion-label>
+    <ion-item *ngFor="let hotel of filtredHotels; let i = index">
+        <ion-item>
+            <ion-avatar>
+                <img
+                    [src]="
+                        hotel.description.fotos[0]
+                            ? hotel.description.fotos[0]
+                            : ''
+                    "
+                />
+            </ion-avatar>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox
+                (ionChange)="selectChange(hotel._id)"
+                color="primary"
+            ></ion-checkbox>
+            <ion-label>{{ hotel.name }}</ion-label>
+        </ion-item>
+        <ion-item (click)="detailesView(hotel._id)">Подробности</ion-item>
     </ion-item>
 </ion-list>

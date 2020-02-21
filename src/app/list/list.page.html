@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>
             List
@@ -20,16 +20,15 @@
             </ion-label>
         </ion-list-header>
         <ion-list>
-            <ion-item
-                *ngFor="let room of hotel.rooms"
-                (click)="bookThis(hotel, room)"
-            >
-                <ion-item>{{room.name}} </ion-item>
+            <ion-item *ngFor="let room of hotel.rooms">
+                <ion-item (click)="roomDetailes(room)">{{room.name}} </ion-item>
                 <ion-item>Взрослых {{searchData.adults}} </ion-item>
                 <ion-item>Детей {{searchData.children}} </ion-item>
                 <ion-item>{{room.price.adult}} </ion-item>
                 <ion-item>{{room.price.children}} </ion-item>
-                <ion-item>Стоимость {{room.totalPrice}} </ion-item>
+                <ion-item (click)="bookThis(hotel, room)"
+                    >Купить за {{room.totalPrice}}
+                </ion-item>
             </ion-item>
         </ion-list>
     </ion-list>
