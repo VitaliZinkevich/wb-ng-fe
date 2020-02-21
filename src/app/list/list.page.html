@@ -4,12 +4,15 @@
             <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>
-            List
+            Результат поиска
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-item *ngIf="hotelsForRender.length === 0">
+        нет результатов. измените условия поиска.
+    </ion-item>
     <ion-list *ngFor="let hotel of hotelsForRender">
         <ion-list-header>
             <ion-label>{{hotel.name}}</ion-label>

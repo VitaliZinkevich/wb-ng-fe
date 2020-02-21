@@ -29,7 +29,9 @@ export class ListPage implements OnInit {
         );
         const accomodatioFromForm = `${this.searchData.adults}+${this.searchData.children}`;
         if (this.searchData.selectedHotels.length) {
-            this.hotelsForRender = this.hotelsForRender.filter(hotel => {
+            this.hotelsForRender = JSON.parse(
+                JSON.stringify(this.hotelsForRender)
+            ).filter(hotel => {
                 if (this.searchData.selectedHotels.indexOf(hotel._id) > -1) {
                     hotel.rooms = hotel.rooms.filter(room => {
                         if (
@@ -47,7 +49,9 @@ export class ListPage implements OnInit {
                 }
             });
         } else {
-            this.hotelsForRender = this.hotelsForRender.filter(hotel => {
+            this.hotelsForRender = JSON.parse(
+                JSON.stringify(this.hotelsForRender)
+            ).filter(hotel => {
                 hotel.rooms = hotel.rooms.filter(room => {
                     if (room.accomodation.indexOf(accomodatioFromForm) > -1) {
                         return true;

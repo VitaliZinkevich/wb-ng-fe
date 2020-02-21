@@ -1,20 +1,27 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar *ngIf="room && hotel">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>{{hotel.name}}, {{hotel.region}}, {{room.name}}</ion-title>
+        <ion-title> {{hotel.name}}, {{hotel.region}}, {{room.name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="room">
+<ion-content *ngIf="room && hotel">
     <ion-item>{{hotel.name}}</ion-item>
     <ion-item>{{hotel.region}}</ion-item>
     <ion-item>{{hotel.stars}} звезды</ion-item>
     <ion-item>{{room.name}}</ion-item>
     <ion-item>{{room.description}}</ion-item>
-    <ion-item *ngFor="let foto of room.fotos">
-        <ion-img [src]="foto"></ion-img>
+    <ion-item>
+        <ion-item>Размещение</ion-item>
+        <ion-item *ngFor="let acc of room.accomodation">{{acc}}</ion-item>
     </ion-item>
-    <ion-item>{{fotos}}</ion-item>
+    <ion-item>
+        <ion-slides class="foto" pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let foto of room.fotos">
+                <ion-img src="{{foto}}"></ion-img>
+            </ion-slide>
+        </ion-slides>
+    </ion-item>
 </ion-content>

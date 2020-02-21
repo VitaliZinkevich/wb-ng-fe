@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar *ngIf="hotel">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -14,11 +14,16 @@
     <ion-item *ngFor="let room of hotel.rooms">
         <ion-item (click)="roomDetailes(room)">
             <ion-item>{{room.name}}</ion-item>
-            <ion-item>{{room.accomodation}}</ion-item>
         </ion-item>
+        <ion-item>Размещение</ion-item>
+        <ion-item *ngFor="let acc of room.accomodation">{{acc}}</ion-item>
     </ion-item>
-    <ion-item *ngFor="let foto of hotel.description.fotos">
-        <ion-img [src]="foto"></ion-img>
+    <ion-item>
+        <ion-slides class="foto" pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let foto of hotel.description.fotos">
+                <ion-img src="{{foto}}"></ion-img>
+            </ion-slide>
+        </ion-slides>
     </ion-item>
     <ion-item></ion-item>
 </ion-content>
