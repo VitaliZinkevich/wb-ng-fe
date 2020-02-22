@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-welcomebelarus-dev-125116-authRole",
+            "UnauthRoleArn": "arn:aws:iam::669733965480:role/amplify-welcomebelarus-dev-125116-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::669733965480:role/amplify-welcomebelarus-dev-125116-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-welcomebelarus-dev-125116-deployment",
+            "UnauthRoleName": "amplify-welcomebelarus-dev-125116-unauthRole",
+            "StackName": "amplify-welcomebelarus-dev-125116",
+            "StackId": "arn:aws:cloudformation:us-east-1:669733965480:stack/amplify-welcomebelarus-dev-125116/e39b9a11-5558-11ea-ba52-0a0207fddeaf",
+            "AmplifyAppId": "d21w9dmwwo52jr"
+        },
+        "categories": {
+            "auth": {
+                "welcomebelarus8fcbb42f": {}
+            }
+        }
+    }
+}

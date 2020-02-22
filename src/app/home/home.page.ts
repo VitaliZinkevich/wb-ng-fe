@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HotelsService } from './../services/hotels.service';
 import { SearchFormService } from './../services/search-form.service';
+import { AmplifyService } from 'aws-amplify-angular';
 
 @Component({
     selector: 'app-home',
@@ -9,6 +10,8 @@ import { SearchFormService } from './../services/search-form.service';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit, OnDestroy {
+    signedIn;
+    user;
     public hotels: any = [];
     public filtredHotels: any = [];
     public searchForm;
@@ -17,8 +20,20 @@ export class HomePage implements OnInit, OnDestroy {
     constructor(
         private searchFormService: SearchFormService,
         private hotelsService: HotelsService,
-        private router: Router
-    ) {}
+        private router: Router,
+        private amplifyService: AmplifyService
+    ) {
+        this.amplifyService.authStateChange$.subscribe(authState => {
+            this.signedIn = authState.state === 'signedIn';
+            if (!authState.user) {
+                this.user = null;
+            } else {
+                this.user = authState.user;
+                // this.greeting = 'Hello ' + this.user.username;
+                // this.router.navigate(['/home']);
+            }
+        });
+    }
     public ngOnDestroy() {
         this.sub1.unsubscribe();
         this.sub2.unsubscribe();

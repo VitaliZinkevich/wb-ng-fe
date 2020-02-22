@@ -43,7 +43,11 @@ const routes: Routes = [
             import('./room-detailes/room-detailes.module').then(
                 m => m.RoomDetailesPageModule
             ),
-    },
+    },  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+  },
+
 ];
 
 @NgModule({

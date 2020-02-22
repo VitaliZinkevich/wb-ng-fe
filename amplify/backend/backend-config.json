@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"welcomebelarus8fcbb42f": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

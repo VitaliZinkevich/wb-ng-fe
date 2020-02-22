@@ -6,6 +6,12 @@
         <ion-title>
             Поиск
         </ion-title>
+        <ion-item slot="end" *ngIf="signedIn">
+            <ion-label>{{user.attributes.email}}</ion-label>
+            <ion-item (click)="logOut()">
+                <ion-icon name="log-out"> </ion-icon
+            ></ion-item>
+        </ion-item>
     </ion-toolbar>
 </ion-header>
 
