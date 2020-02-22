@@ -146,8 +146,8 @@ export class DetailesPage implements OnInit {
 
     ngOnInit() {
         this.id = this.route.snapshot.paramMap.get('id');
-        this.sub1 = this.hotelsService.api.subscribe(data => {
-            let hotels: any = data;
+        this.sub1 = this.hotelsService.api.subscribe((data: { url: any }) => {
+            let hotels: any = data.url;
             this.hotel = hotels.find(el => {
                 return el._id === this.id;
             });

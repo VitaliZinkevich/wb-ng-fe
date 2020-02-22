@@ -13,7 +13,11 @@ import { AppComponent } from './app.component';
 import { SearchFormService } from './services/search-form.service';
 import { HotelsService } from './services/hotels.service';
 import { OrderService } from './services/order.service';
-
+import {
+    AmplifyAngularModule,
+    AmplifyIonicModule,
+    AmplifyService,
+} from 'aws-amplify-angular';
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -24,6 +28,8 @@ import { OrderService } from './services/order.service';
         AppRoutingModule,
         BrowserAnimationsModule,
         BsDatepickerModule.forRoot(),
+        AmplifyAngularModule,
+        AmplifyIonicModule,
     ],
     providers: [
         StatusBar,
@@ -31,6 +37,7 @@ import { OrderService } from './services/order.service';
         SearchFormService,
         HotelsService,
         OrderService,
+        AmplifyService,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ],
     bootstrap: [AppComponent],

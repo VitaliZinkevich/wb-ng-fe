@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { shareReplay, share } from 'rxjs/operators';
+import { API } from 'aws-amplify';
+import 'rxjs/add/observable/fromPromise';
 
 @Injectable({
     providedIn: 'root',
@@ -16,8 +18,18 @@ export class HotelsService {
         return this.cache$;
     }
     private getReadyHotels() {
-        return this.http.get(
-            'https://5g1bclrzf9.execute-api.us-east-1.amazonaws.com/production/hotel'
-        );
+        return Observable.fromPromise(API.get('hotels', '/hotels', {}));
+
+        // API.get('hotels', '/hotels', {})
+        //     .then(response => {
+        //         console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.log(error.response);
+        //     });
+
+        // return this.http.get(
+        //     'https://5g1bclrzf9.execute-api.us-east-1.amazonaws.com/production/hotel'
+        // );
     }
 }

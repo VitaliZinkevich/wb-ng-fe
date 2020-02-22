@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar slot="start">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Вход</ion-title>
+        <ion-item slot="end" *ngIf="signedIn">
+            <ion-label>{{user.attributes.email}}</ion-label>
+            <ion-item (click)="logOut()">
+                <ion-icon name="log-out"> </ion-icon
+            ></ion-item>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <ion-router-outlet name="main-content"></ion-router-outlet> -->
+    <amplify-authenticator
+        framework="Ionic"
+        [signUpConfig]="signUpConfig"
+        [hide]="['Greetings']"
+    >
+    </amplify-authenticator>
+    <a routerLink="/app-account">app-account</a>
+    <!-- <app-account></app-account> -->
+</ion-content>

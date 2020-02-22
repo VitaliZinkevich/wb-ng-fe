@@ -12,15 +12,16 @@ import { Platform } from '@ionic/angular';
 export class AppComponent {
     public appPages = [
         {
+            title: 'Вход',
+            url: '/auth',
+            icon: 'log-in',
+        },
+        {
             title: 'Поиск',
             url: '/home',
             icon: 'search',
         },
-        // {
-        //     title: 'List',
-        //     url: '/list',
-        //     icon: 'list',
-        // },
+
         // {
         //     title: 'Order',
         //     url: '/order',
