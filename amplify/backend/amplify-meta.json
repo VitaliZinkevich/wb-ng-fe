@@ -1,0 +1,85 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-welcomebelarus-dev-125116-authRole",
+			"UnauthRoleArn": "arn:aws:iam::669733965480:role/amplify-welcomebelarus-dev-125116-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::669733965480:role/amplify-welcomebelarus-dev-125116-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-welcomebelarus-dev-125116-deployment",
+			"UnauthRoleName": "amplify-welcomebelarus-dev-125116-unauthRole",
+			"StackName": "amplify-welcomebelarus-dev-125116",
+			"StackId": "arn:aws:cloudformation:us-east-1:669733965480:stack/amplify-welcomebelarus-dev-125116/e39b9a11-5558-11ea-ba52-0a0207fddeaf",
+			"AmplifyAppId": "d21w9dmwwo52jr"
+		}
+	},
+	"auth": {
+		"welcomebelarus8fcbb42f": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/auth/welcomebelarus8fcbb42f-cloudformation-template.yml",
+				"logicalId": "authwelcomebelarus8fcbb42f"
+			},
+			"lastPushTimeStamp": "2020-02-22T15:39:55.062Z",
+			"output": {
+				"AppClientSecret": "1ohpbnjvmqh17jcu9f0b6sa6cadck4ct9r6plre07ccd9q8dk5qh",
+				"UserPoolId": "us-east-1_ji1XSAE1l",
+				"AppClientIDWeb": "7k39vnd7q5bv3bb41b4ricr2u7",
+				"AppClientID": "6erkbnnfmiif4dugivokpcdm0t",
+				"IdentityPoolId": "us-east-1:dd5e3a61-678f-4b6d-a1f9-740a88ab7b8a",
+				"IdentityPoolName": "welcomebelarus8fcbb42f_identitypool_8fcbb42f__dev",
+				"UserPoolName": "welcomebelarus8fcbb42f_userpool_8fcbb42f"
+			},
+			"lastPushDirHash": "U7K8WBAvrNhw6mR2nKMWukInLJ8="
+		}
+	},
+	"function": {
+		"holtelslambda": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"lastBuildTimeStamp": "2020-02-22T15:30:33.534Z",
+			"lastPackageTimeStamp": "2020-02-22T15:38:46.685Z",
+			"distZipFilename": "holtelslambda-4c7a464d3063504a5041-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/function/holtelslambda-cloudformation-template.json",
+				"logicalId": "functionholtelslambda"
+			},
+			"lastPushTimeStamp": "2020-02-22T15:39:55.077Z",
+			"output": {
+				"Region": "us-east-1",
+				"Arn": "arn:aws:lambda:us-east-1:669733965480:function:holtelslambda-dev",
+				"Name": "holtelslambda-dev",
+				"LambdaExecutionRole": "welcomebelarusLambdaRolec1384b2d-dev"
+			},
+			"lastPushDirHash": "wW51cnkZ4yJNEzPg5bdC/WS/JNU="
+		}
+	},
+	"api": {
+		"hotels": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "holtelslambda",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/api/hotels-cloudformation-template.json",
+				"logicalId": "apihotels"
+			},
+			"lastPushTimeStamp": "2020-02-22T15:39:55.069Z",
+			"output": {
+				"ApiName": "hotels",
+				"RootUrl": "https://a5eqznt3z3.execute-api.us-east-1.amazonaws.com/dev"
+			},
+			"lastPushDirHash": "AiU4PbWXGi+5fyzwUh4n9YpcAQQ="
+		}
+	}
+}

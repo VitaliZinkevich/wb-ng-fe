@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/hotels",
+            "lambdaFunction": "holtelslambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "hotels",
+    "apiName": "hotels",
+    "functionArns": [
+        {
+            "lambdaFunction": "holtelslambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-welcomebelarus-dev-125116-authRole",
+        "unAuthRoleName": "amplify-welcomebelarus-dev-125116-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "holtelslambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
