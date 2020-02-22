@@ -1,0 +1,40 @@
+{
+    "paths": [
+        {
+            "name": "/order",
+            "lambdaFunction": "order",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "order",
+    "apiName": "order",
+    "functionArns": [
+        {
+            "lambdaFunction": "order"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-welcomebelarus-dev-125116-authRole",
+        "unAuthRoleName": "amplify-welcomebelarus-dev-125116-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "order",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

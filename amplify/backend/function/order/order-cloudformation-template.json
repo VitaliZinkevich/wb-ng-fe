@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"holtelslambda",
+						"orderlambda",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"holtelslambda",
+									"orderlambda",
 									"-",
 									{
 										"Ref": "env"
@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-welcomebelarus-dev-125116-deployment",
-					"S3Key": "amplify-builds/holtelslambda-6435534256555a34594c-build.zip"
+					"S3Key": "amplify-builds/order-6769414c42454a736a56-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"welcomebelarusLambdaRolec1384b2d",
+						"welcomebelarusLambdaRolee92b1131",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"welcomebelarusLambdaRolec1384b2d",
+									"welcomebelarusLambdaRolee92b1131",
 									"-",
 									{
 										"Ref": "env"

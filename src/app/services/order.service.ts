@@ -28,12 +28,18 @@ export class OrderService {
         const data = new FormGroup({
             firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
+            passNumber: new FormControl('', Validators.required),
+            passValidTill: new FormControl('', Validators.required),
+            birthDate: new FormControl('', Validators.required),
         });
         if (this.currentOrder) {
-            const tourists = this.orderForm.get('touristsData') as FormArray;
+            let tourists = this.orderForm.get('touristsData') as FormArray;
             const n = +this.currentOrder.adults + +this.currentOrder.children;
-            for (let i = 0; i < n; i++) {
-                tourists.push(data);
+            if (!tourists.length || n !== tourists.length) {
+                tourists.clear();
+                for (let i = 0; i < n; i++) {
+                    tourists.push(data);
+                }
             }
             return this.orderForm;
         }

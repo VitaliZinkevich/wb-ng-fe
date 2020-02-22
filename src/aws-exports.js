@@ -12,6 +12,11 @@ const awsmobile = {
             "name": "hotels",
             "endpoint": "https://a5eqznt3z3.execute-api.us-east-1.amazonaws.com/dev",
             "region": "us-east-1"
+        },
+        {
+            "name": "order",
+            "endpoint": "https://aqvbvrykte.execute-api.us-east-1.amazonaws.com/dev",
+            "region": "us-east-1"
         }
     ]
 };

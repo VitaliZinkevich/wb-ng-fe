@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-welcomebelarus-dev-125116-deployment",
-					"S3Key": "amplify-builds/holtelslambda-4c7a464d3063504a5041-build.zip"
+					"S3Key": "amplify-builds/holtelslambda-6435534256555a34594c-build.zip"
 				}
 			}
 		},

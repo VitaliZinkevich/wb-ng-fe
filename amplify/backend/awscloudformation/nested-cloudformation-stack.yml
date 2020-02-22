@@ -125,6 +125,15 @@
 				}
 			}
 		},
+		"functionorder": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/function/order-cloudformation-template.json",
+				"Parameters": {
+					"env": "dev"
+				}
+			}
+		},
 		"apihotels": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
@@ -145,6 +154,33 @@
 					"functionholtelslambdaArn": {
 						"Fn::GetAtt": [
 							"functionholtelslambda",
+							"Outputs.Arn"
+						]
+					},
+					"env": "dev"
+				}
+			}
+		},
+		"apiorder": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/api/order-cloudformation-template.json",
+				"Parameters": {
+					"authRoleName": {
+						"Ref": "AuthRoleName"
+					},
+					"unauthRoleName": {
+						"Ref": "UnauthRoleName"
+					},
+					"functionorderName": {
+						"Fn::GetAtt": [
+							"functionorder",
+							"Outputs.Name"
+						]
+					},
+					"functionorderArn": {
+						"Fn::GetAtt": [
+							"functionorder",
 							"Outputs.Arn"
 						]
 					},

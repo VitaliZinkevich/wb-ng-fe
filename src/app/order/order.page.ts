@@ -35,6 +35,7 @@ export class OrderPage implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy() {
+        console.log('ngOnDestroy');
         this.form = null;
     }
 
