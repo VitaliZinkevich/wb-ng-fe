@@ -1,6 +1,6 @@
 {
     "identityPoolName": "welcomebelarus8fcbb42f_identitypool_8fcbb42f",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "welcom8fcbb42f",
     "userPoolName": "welcomebelarus8fcbb42f_userpool_8fcbb42f",
     "autoVerifiedAttributes": [

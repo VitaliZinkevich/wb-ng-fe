@@ -41,8 +41,8 @@ export class HomePage implements OnInit, OnDestroy {
 
     public ngOnInit() {
         this.searchForm = this.searchFormService.getSearchForm();
-        this.sub1 = this.hotelsService.api.subscribe(data => {
-            this.hotels = data;
+        this.sub1 = this.hotelsService.api.subscribe((data: { url: any }) => {
+            this.hotels = data.url;
             this.filtredHotels = this.filterHotelList(
                 this.hotels,
                 this.searchForm.value
