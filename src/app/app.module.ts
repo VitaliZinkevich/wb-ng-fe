@@ -19,6 +19,7 @@ import {
     AmplifyIonicModule,
     AmplifyService,
 } from 'aws-amplify-angular';
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],

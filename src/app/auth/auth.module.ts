@@ -7,7 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { AuthPageRoutingModule } from './auth-routing.module';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { AuthPage } from './auth.page';
+
 import { AccountComponent } from './account/account.component';
+import { AppRoutingModule } from './../app-routing.module';
 
 @NgModule({
     imports: [

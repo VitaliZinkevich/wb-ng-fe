@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AccountComponent } from './auth/account/account.component';
 
 const routes: Routes = [
     {
@@ -43,11 +44,17 @@ const routes: Routes = [
             import('./room-detailes/room-detailes.module').then(
                 m => m.RoomDetailesPageModule
             ),
-    },  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
-  },
-
+    },
+    {
+        path: 'auth',
+        loadChildren: () =>
+            import('./auth/auth.module').then(m => m.AuthPageModule),
+    },
+    // {
+    //     path: 'auth/account',
+    //     component: AccountComponent,
+    //     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+    // },
 ];
 
 @NgModule({

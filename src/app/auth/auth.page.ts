@@ -28,7 +28,7 @@ export class AuthPage implements OnInit {
     signUpConfig = {
         header: 'Sing Up',
         hideAllDefaults: true,
-        defaultCountryCode: '7',
+        // defaultCountryCode: '7',
         signUpFields: [
             {
                 label: 'Email',
