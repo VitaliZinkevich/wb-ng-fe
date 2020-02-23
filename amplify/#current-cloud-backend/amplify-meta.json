@@ -21,7 +21,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/auth/welcomebelarus8fcbb42f-cloudformation-template.yml",
 				"logicalId": "authwelcomebelarus8fcbb42f"
 			},
-			"lastPushTimeStamp": "2020-02-22T17:26:48.426Z",
+			"lastPushTimeStamp": "2020-02-23T15:31:47.814Z",
 			"output": {
 				"AppClientSecret": "1ohpbnjvmqh17jcu9f0b6sa6cadck4ct9r6plre07ccd9q8dk5qh",
 				"UserPoolId": "us-east-1_ji1XSAE1l",
@@ -31,7 +31,7 @@
 				"IdentityPoolName": "welcomebelarus8fcbb42f_identitypool_8fcbb42f__dev",
 				"UserPoolName": "welcomebelarus8fcbb42f_userpool_8fcbb42f"
 			},
-			"lastPushDirHash": "0LooUh2fSobLNVEHueDT7KeJnzo="
+			"lastPushDirHash": "C+O8pLI1V16MZQtkWzG2jL7koJk="
 		}
 	},
 	"function": {
@@ -46,7 +46,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/function/holtelslambda-cloudformation-template.json",
 				"logicalId": "functionholtelslambda"
 			},
-			"lastPushTimeStamp": "2020-02-22T17:26:48.426Z",
+			"lastPushTimeStamp": "2020-02-23T15:31:47.817Z",
 			"output": {
 				"Region": "us-east-1",
 				"Arn": "arn:aws:lambda:us-east-1:669733965480:function:holtelslambda-dev",
@@ -59,21 +59,21 @@
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
 			"build": true,
-			"lastBuildTimeStamp": "2020-02-22T17:16:57.554Z",
-			"lastPackageTimeStamp": "2020-02-22T17:17:02.637Z",
-			"distZipFilename": "order-6769414c42454a736a56-build.zip",
+			"lastBuildTimeStamp": "2020-02-23T13:39:28.090Z",
+			"lastPackageTimeStamp": "2020-02-23T15:30:39.473Z",
+			"distZipFilename": "order-4b2b597367307934736b-build.zip",
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/function/order-cloudformation-template.json",
 				"logicalId": "functionorder"
 			},
-			"lastPushTimeStamp": "2020-02-22T17:26:48.426Z",
+			"lastPushTimeStamp": "2020-02-23T15:31:47.830Z",
 			"output": {
 				"Region": "us-east-1",
 				"Arn": "arn:aws:lambda:us-east-1:669733965480:function:orderlambda-dev",
 				"Name": "orderlambda-dev",
 				"LambdaExecutionRole": "welcomebelarusLambdaRolee92b1131-dev"
 			},
-			"lastPushDirHash": "yzItL2EBQ/d3YJl5ows6kp0opS8="
+			"lastPushDirHash": "amY2lM86KQu7bv7gfvYb7nNAs14="
 		}
 	},
 	"api": {
@@ -94,7 +94,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/api/hotels-cloudformation-template.json",
 				"logicalId": "apihotels"
 			},
-			"lastPushTimeStamp": "2020-02-22T17:26:48.426Z",
+			"lastPushTimeStamp": "2020-02-23T15:31:47.822Z",
 			"output": {
 				"ApiName": "hotels",
 				"RootUrl": "https://a5eqznt3z3.execute-api.us-east-1.amazonaws.com/dev"
@@ -118,7 +118,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-welcomebelarus-dev-125116-deployment/amplify-cfn-templates/api/order-cloudformation-template.json",
 				"logicalId": "apiorder"
 			},
-			"lastPushTimeStamp": "2020-02-22T17:26:48.426Z",
+			"lastPushTimeStamp": "2020-02-23T15:31:47.824Z",
 			"output": {
 				"ApiName": "order",
 				"RootUrl": "https://aqvbvrykte.execute-api.us-east-1.amazonaws.com/dev"

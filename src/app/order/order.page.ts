@@ -12,18 +12,23 @@ export class OrderPage implements OnInit, OnDestroy {
     public preOrder;
     public form;
     public tourists;
+    signedIn;
+    user;
     constructor(
         private orderService: OrderService,
         private amplifyService: AmplifyService
     ) {
-        /** now you can access category APIs:
-         * this.amplifyService.auth();          // AWS Amplify Auth
-         * this.amplifyService.analytics();     // AWS Amplify Analytics
-         * this.amplifyService.storage();       // AWS Amplify Storage
-         * this.amplifyService.api();           // AWS Amplify API
-         * this.amplifyService.cache();         // AWS Amplify Cache
-         * this.amplifyService.pubsub();        // AWS Amplify PubSub
-         **/
+        this.amplifyService.authStateChange$.subscribe(authState => {
+            this.signedIn = authState.state === 'signedIn';
+            if (!authState.user) {
+                this.user = null;
+            } else {
+                this.user = authState.user;
+                // this.greeting = 'Hello ' + this.user.username;
+                // this.router.navigate(['/home']);
+            }
+        });
+
         this.form = this.orderService.getOrderForm();
         if (this.form) {
             this.tourists = this.form.get('touristsData') as FormArray;
@@ -40,6 +45,8 @@ export class OrderPage implements OnInit, OnDestroy {
     }
 
     public saveOrder() {
-        this.orderService.saveOrder();
+        this.orderService.saveOrder().subscribe(data => {
+            console.log(data);
+        });
     }
 }

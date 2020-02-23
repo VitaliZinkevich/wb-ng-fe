@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HotelsService } from './../services/hotels.service';
 import { SearchFormService } from './../services/search-form.service';
 import { AmplifyService } from 'aws-amplify-angular';
+import { Auth } from 'aws-amplify';
 
 @Component({
     selector: 'app-home',
@@ -97,5 +98,9 @@ export class HomePage implements OnInit, OnDestroy {
     public priceShow() {
         this.searchForm.value.filtredHotelsForm = this.filtredHotels;
         this.router.navigate(['/list']);
+    }
+
+    logOut() {
+        Auth.signOut().catch(err => console.log(err));
     }
 }
