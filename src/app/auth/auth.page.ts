@@ -64,6 +64,7 @@ export class AuthPage implements OnInit {
     signedIn: boolean;
     user: any;
     greeting: string;
+    // https://stackoverflow.com/questions/35446955/how-to-go-back-last-page
     constructor(
         private amplifyService: AmplifyService,
         private router: Router
