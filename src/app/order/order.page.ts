@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../services/order.service';
 import { AmplifyService } from 'aws-amplify-angular';
+import { CommonsService } from './../services/commons.service';
 
 @Component({
     selector: 'app-order',
@@ -16,7 +17,8 @@ export class OrderPage implements OnInit, OnDestroy {
     user;
     constructor(
         private orderService: OrderService,
-        private amplifyService: AmplifyService
+        private amplifyService: AmplifyService,
+        private commonsService: CommonsService
     ) {
         this.amplifyService.authStateChange$.subscribe(authState => {
             this.signedIn = authState.state === 'signedIn';
@@ -44,8 +46,11 @@ export class OrderPage implements OnInit, OnDestroy {
         this.form = null;
     }
 
-    public saveOrder() {
+    public async saveOrder() {
+        let loader = await this.commonsService.getLoader('Размещение заказа');
+        loader.present();
         this.orderService.saveOrder().subscribe(data => {
+            loader.dismiss();
             console.log(data);
         });
     }

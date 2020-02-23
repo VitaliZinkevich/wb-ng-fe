@@ -4,6 +4,7 @@ import { HotelsService } from './../services/hotels.service';
 import { SearchFormService } from './../services/search-form.service';
 import { AmplifyService } from 'aws-amplify-angular';
 import { Auth } from 'aws-amplify';
+import { CommonsService } from './../services/commons.service';
 
 @Component({
     selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomePage implements OnInit, OnDestroy {
         private searchFormService: SearchFormService,
         private hotelsService: HotelsService,
         private router: Router,
-        private amplifyService: AmplifyService
+        private amplifyService: AmplifyService,
+        private commonsService: CommonsService
     ) {
         this.amplifyService.authStateChange$.subscribe(authState => {
             this.signedIn = authState.state === 'signedIn';
@@ -40,9 +42,12 @@ export class HomePage implements OnInit, OnDestroy {
         this.sub2.unsubscribe();
     }
 
-    public ngOnInit() {
+    public async ngOnInit() {
         this.searchForm = this.searchFormService.getSearchForm();
+        let loader = await this.commonsService.getLoader('');
+        loader.present();
         this.sub1 = this.hotelsService.api.subscribe((data: { url: any }) => {
+            loader.dismiss();
             this.hotels = data.url;
             this.filtredHotels = this.filterHotelList(
                 this.hotels,

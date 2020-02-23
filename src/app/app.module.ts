@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { SearchFormService } from './services/search-form.service';
 import { HotelsService } from './services/hotels.service';
 import { OrderService } from './services/order.service';
+import { CommonsService } from './services/commons.service';
 import {
     AmplifyAngularModule,
     AmplifyIonicModule,
@@ -38,6 +39,7 @@ import {
         HotelsService,
         OrderService,
         AmplifyService,
+        CommonsService,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ],
     bootstrap: [AppComponent],
