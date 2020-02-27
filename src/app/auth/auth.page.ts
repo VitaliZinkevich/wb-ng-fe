@@ -64,25 +64,31 @@ export class AuthPage implements OnInit {
     signedIn: boolean;
     user: any;
     greeting: string;
+    authStateChange$;
     // https://stackoverflow.com/questions/35446955/how-to-go-back-last-page
     constructor(
         private amplifyService: AmplifyService,
         private router: Router
     ) {
-        this.amplifyService.authStateChange$.subscribe(authState => {
-            this.signedIn = authState.state === 'signedIn';
-            if (!authState.user) {
-                this.user = null;
-            } else {
-                this.user = authState.user;
-                // this.greeting = 'Hello ' + this.user.username;
-                // this.router.navigate(['/home']);
+        this.authStateChange$ = this.amplifyService.authStateChange$.subscribe(
+            authState => {
+                console.log('authStateChange$', authState);
+                this.signedIn = authState.state === 'signedIn';
+                if (!authState.user) {
+                    this.user = null;
+                } else {
+                    this.user = authState.user;
+                    // this.greeting = 'Hello ' + this.user.username;
+                    // this.router.navigate(['/home']);
+                }
             }
-        });
+        );
     }
 
     ngOnInit() {}
-
+    ngOnDestroy() {
+        this.authStateChange$.unsubscribe();
+    }
     logOut() {
         Auth.signOut().catch(err => console.log(err));
     }

@@ -10,7 +10,7 @@ import { HotelsService } from './../services/hotels.service';
 export class DetailesPage implements OnInit {
     id: string;
     hotel;
-    sub1;
+    api;
     slideOpts = {
         slidesPerView: 3,
         coverflowEffect: {
@@ -146,12 +146,16 @@ export class DetailesPage implements OnInit {
 
     ngOnInit() {
         this.id = this.route.snapshot.paramMap.get('id');
-        this.sub1 = this.hotelsService.api.subscribe((data: { url: any }) => {
+        this.api = this.hotelsService.api.subscribe((data: { url: any }) => {
             let hotels: any = data.url;
             this.hotel = hotels.find(el => {
                 return el._id === this.id;
             });
         });
+    }
+
+    ngOnDestroy() {
+        this.api.unsubscribe();
     }
 
     roomDetailes(room) {

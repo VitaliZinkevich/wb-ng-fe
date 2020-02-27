@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './auth/account/account.component';
+import { AccountGuard } from './auth/account.guard';
 
 const routes: Routes = [
     {
@@ -22,6 +23,7 @@ const routes: Routes = [
         path: 'order',
         loadChildren: () =>
             import('./order/order.module').then(m => m.OrderPageModule),
+        canActivate: [AccountGuard],
     },
     {
         path: 'detailes/:id',

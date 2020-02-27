@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HotelListComponent } from './../hotel-list/hotel-list.component';
-
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -21,8 +21,9 @@ import { HomePage } from './home.page';
                 component: HomePage,
             },
         ]),
+        AmplifyAngularModule,
     ],
     declarations: [HomePage, HotelListComponent],
-    providers: [],
+    providers: [AmplifyService],
 })
 export class HomePageModule {}

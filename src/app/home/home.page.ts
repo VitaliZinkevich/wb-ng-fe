@@ -17,8 +17,9 @@ export class HomePage implements OnInit, OnDestroy {
     public hotels: any = [];
     public filtredHotels: any = [];
     public searchForm;
-    public sub1;
-    public sub2;
+    public api$;
+    public searchFormValues$;
+    authStateChange$;
     constructor(
         private searchFormService: SearchFormService,
         private hotelsService: HotelsService,
@@ -26,27 +27,30 @@ export class HomePage implements OnInit, OnDestroy {
         private amplifyService: AmplifyService,
         private commonsService: CommonsService
     ) {
-        this.amplifyService.authStateChange$.subscribe(authState => {
-            this.signedIn = authState.state === 'signedIn';
-            if (!authState.user) {
-                this.user = null;
-            } else {
-                this.user = authState.user;
-                // this.greeting = 'Hello ' + this.user.username;
-                // this.router.navigate(['/home']);
+        this.authStateChange$ = this.amplifyService.authStateChange$.subscribe(
+            authState => {
+                console.log('authStateChange$', authState);
+                this.signedIn = authState.state === 'signedIn';
+                if (!authState.user) {
+                    this.user = null;
+                } else {
+                    this.user = authState.user;
+                }
             }
-        });
+        );
+        console.log(this.signedIn, this.user);
     }
     public ngOnDestroy() {
-        this.sub1.unsubscribe();
-        this.sub2.unsubscribe();
+        this.api$.unsubscribe();
+        this.searchFormValues$.unsubscribe();
+        this.authStateChange$.unsubscribe();
     }
 
     public async ngOnInit() {
         this.searchForm = this.searchFormService.getSearchForm();
         let loader = await this.commonsService.getLoader('');
         loader.present();
-        this.sub1 = this.hotelsService.api.subscribe((data: { url: any }) => {
+        this.api$ = this.hotelsService.api.subscribe((data: { url: any }) => {
             loader.dismiss();
             this.hotels = data.url;
             this.filtredHotels = this.filterHotelList(
@@ -55,9 +59,11 @@ export class HomePage implements OnInit, OnDestroy {
             );
         });
 
-        this.sub2 = this.searchForm.valueChanges.subscribe(form => {
-            this.filtredHotels = this.filterHotelList(this.hotels, form);
-        });
+        this.searchFormValues$ = this.searchForm.valueChanges.subscribe(
+            form => {
+                this.filtredHotels = this.filterHotelList(this.hotels, form);
+            }
+        );
     }
 
     public filterHotelList(list, form) {

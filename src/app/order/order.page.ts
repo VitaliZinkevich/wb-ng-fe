@@ -15,21 +15,25 @@ export class OrderPage implements OnInit, OnDestroy {
     public tourists;
     signedIn;
     user;
+    orderService$;
+    amplifyService$;
     constructor(
         private orderService: OrderService,
         private amplifyService: AmplifyService,
         private commonsService: CommonsService
     ) {
-        this.amplifyService.authStateChange$.subscribe(authState => {
-            this.signedIn = authState.state === 'signedIn';
-            if (!authState.user) {
-                this.user = null;
-            } else {
-                this.user = authState.user;
-                // this.greeting = 'Hello ' + this.user.username;
-                // this.router.navigate(['/home']);
+        this.amplifyService$ = this.amplifyService.authStateChange$.subscribe(
+            authState => {
+                this.signedIn = authState.state === 'signedIn';
+                if (!authState.user) {
+                    this.user = null;
+                } else {
+                    this.user = authState.user;
+                    // this.greeting = 'Hello ' + this.user.username;
+                    // this.router.navigate(['/home']);
+                }
             }
-        });
+        );
 
         this.form = this.orderService.getOrderForm();
         if (this.form) {
@@ -42,14 +46,14 @@ export class OrderPage implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy() {
-        console.log('ngOnDestroy');
         this.form = null;
+        this.orderService$.unsubscribe();
     }
 
     public async saveOrder() {
         let loader = await this.commonsService.getLoader('Размещение заказа');
         loader.present();
-        this.orderService.saveOrder().subscribe(data => {
+        this.orderService$ = this.orderService.saveOrder().subscribe(data => {
             loader.dismiss();
             console.log(data);
         });

@@ -3,7 +3,13 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Вход</ion-title>
+        <ng-container *ngIf="signedIn">
+            <ion-title>Личный кабинет</ion-title>
+        </ng-container>
+        <ng-container *ngIf="!signedIn">
+            <ion-title>Вход</ion-title>
+        </ng-container>
+
         <ion-item slot="end" *ngIf="signedIn">
             <ion-label>{{user.attributes.email}}</ion-label>
             <ion-item (click)="logOut()">

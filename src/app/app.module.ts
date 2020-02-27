@@ -19,6 +19,11 @@ import {
     AmplifyIonicModule,
     AmplifyService,
 } from 'aws-amplify-angular';
+import {
+    Location,
+    LocationStrategy,
+    PathLocationStrategy,
+} from '@angular/common';
 
 @NgModule({
     declarations: [AppComponent],
@@ -34,6 +39,8 @@ import {
         AmplifyIonicModule,
     ],
     providers: [
+        Location,
+        { provide: LocationStrategy, useClass: PathLocationStrategy },
         StatusBar,
         SplashScreen,
         SearchFormService,
