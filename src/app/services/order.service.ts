@@ -63,6 +63,11 @@ export class OrderService {
             return this.orderForm;
         }
     }
+
+    public getOrders() {
+        return Observable.fromPromise(API.get('order', '/order', {}));
+    }
+
     public saveOrder() {
         const order = {
             user: '',

@@ -79,7 +79,7 @@ export class AuthPage implements OnInit {
                 } else {
                     this.user = authState.user;
                     // this.greeting = 'Hello ' + this.user.username;
-                    // this.router.navigate(['/home']);
+                    this.router.navigate(['auth/app-account']);
                 }
             }
         );

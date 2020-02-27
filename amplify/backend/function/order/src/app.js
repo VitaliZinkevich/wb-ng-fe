@@ -31,8 +31,15 @@ app.use(function(req, res, next) {
  **********************/
 
 app.get('/order', function(req, res) {
-    // Add your code here
-    res.json({ success: 'get call succeed!', url: req.url });
+    util.dbConnectAndExecute(util.mongoString, () =>
+        OrderModel.find({})
+            .then(orders =>
+                res.json({ success: 'get call succeed!', orders: orders })
+            )
+            .catch(err => {
+                res.json({ success: 'get call failed!', orders: err });
+            })
+    );
 });
 
 app.get('/order/*', function(req, res) {

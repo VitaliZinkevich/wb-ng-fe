@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-welcomebelarus-dev-125116-deployment",
-					"S3Key": "amplify-builds/order-4b2b597367307934736b-build.zip"
+					"S3Key": "amplify-builds/order-5131524a637070634f70-build.zip"
 				}
 			}
 		},

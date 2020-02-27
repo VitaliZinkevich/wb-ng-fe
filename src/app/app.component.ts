@@ -31,14 +31,17 @@ export class AppComponent {
                     let menu = this.appPages.find(el => {
                         return el.title === 'Личный кабинет';
                     });
-                    menu.title = 'Вход';
+                    if (menu) {
+                        menu.title = 'Вход';
+                    }
                 } else {
                     this.user = authState.user;
                     let menu = this.appPages.find(el => {
                         return el.title === 'Вход';
                     });
-                    menu.title = 'Личный кабинет';
-
+                    if (menu) {
+                        menu.title = 'Личный кабинет';
+                    }
                     // this.greeting = 'Hello ' + this.user.username;
                     // this.router.navigate(['/home']);
                 }
