@@ -5,6 +5,7 @@ import { AmplifyService } from 'aws-amplify-angular';
 import { I18n } from 'aws-amplify';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
+import { ActivatedRoute } from '@angular/router';
 
 const authScreenLabels = {
     ru: {
@@ -68,18 +69,29 @@ export class AuthPage implements OnInit {
     // https://stackoverflow.com/questions/35446955/how-to-go-back-last-page
     constructor(
         private amplifyService: AmplifyService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         this.authStateChange$ = this.amplifyService.authStateChange$.subscribe(
             authState => {
                 console.log('authStateChange$', authState);
                 this.signedIn = authState.state === 'signedIn';
+
                 if (!authState.user) {
                     this.user = null;
                 } else {
                     this.user = authState.user;
-                    // this.greeting = 'Hello ' + this.user.username;
-                    this.router.navigate(['auth/app-account']);
+                }
+
+                if (this.signedIn) {
+                    this.router
+                        .navigate(['app-account'], { relativeTo: this.route })
+                        .then(r => {
+                            console.log(r);
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        });
                 }
             }
         );

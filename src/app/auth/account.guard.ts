@@ -10,11 +10,12 @@ import {
     NavigationEnd,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 import { Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { pairwise } from 'rxjs/operators';
-import 'rxjs/operator/filter';
+import { pairwise, shareReplay, share } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 @Injectable({
     providedIn: 'root',
 })
@@ -22,13 +23,15 @@ export class AccountGuard implements CanActivate {
     signedIn = false;
     user;
     previousUrl;
+    currentAuthenticatedUser$;
     constructor(
         private location: Location,
         private amplifyService: AmplifyService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         this.amplifyService.authStateChange$.subscribe(authState => {
-            console.log('authStateChange$', authState);
+            // console.log('authStateChange$', authState);
             this.signedIn = authState.state === 'signedIn';
             if (!authState.user) {
                 this.user = null;
@@ -38,34 +41,48 @@ export class AccountGuard implements CanActivate {
                 // this.router.navigate(['/home']);
             }
         });
-
-        //     .filter(e => e instanceof RoutesRecognized)
-        // .pairwise()
-        // .subscribe((event: any[]) => {
-        //   console.log(event[0].urlAfterRedirects);
-        // });
-
-        this.router.events.pipe(pairwise()).subscribe((e: any) => {
-            console.log('prev:', this.previousUrl);
-            this.previousUrl = e.url;
-        });
     }
 
-    canActivate(
+    setup() {
+        this.currentAuthenticatedUser$ = this.currentAuthenticatedUser().subscribe(
+            user => {
+                console.log(user);
+                if (user) {
+                    this.signedIn = true;
+                }
+            }
+        );
+    }
+
+    currentAuthenticatedUser() {
+        return Observable.fromPromise(Auth.currentAuthenticatedUser()).pipe(
+            share()
+        );
+    }
+
+    async canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): boolean {
-        if (this.signedIn) {
+    ): Promise<boolean> {
+        let login = await this.currentAuthenticatedUser().toPromise();
+        let logintestforShareRepaly = this.currentAuthenticatedUser().subscribe(
+            data => {
+                console.log(data);
+            }
+        );
+        if (login) {
             return true;
         }
-        console.log(this.signedIn);
-        console.log();
-        // this.router.navigate(['home']);
-        console.log(this.location.getState());
-        this.location.subscribe(state => {
-            console.log(state);
-        });
-        // this.location.back();
+        // этот редирект не работает и вообще все падает на попытку перехода
+        this.router
+            .navigate(['auth'])
+            .then(r => {
+                console.log(r);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+
         return false;
     }
 }

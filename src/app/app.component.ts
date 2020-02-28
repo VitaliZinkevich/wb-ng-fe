@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
 import { AmplifyService } from 'aws-amplify-angular';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -20,12 +21,14 @@ export class AppComponent {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private amplifyService: AmplifyService
+        private amplifyService: AmplifyService,
+        private router: Router
     ) {
         this.authStateChange$ = this.amplifyService.authStateChange$.subscribe(
             authState => {
                 console.log('authStateChange$', authState);
                 this.signedIn = authState.state === 'signedIn';
+
                 if (!authState.user) {
                     this.user = null;
                     let menu = this.appPages.find(el => {
@@ -33,26 +36,21 @@ export class AppComponent {
                     });
                     if (menu) {
                         menu.title = 'Вход';
+                        menu.url = '/auth';
                     }
                 } else {
                     this.user = authState.user;
+
                     let menu = this.appPages.find(el => {
                         return el.title === 'Вход';
                     });
                     if (menu) {
                         menu.title = 'Личный кабинет';
+                        menu.url = '/auth/app-account';
                     }
-                    // this.greeting = 'Hello ' + this.user.username;
-                    // this.router.navigate(['/home']);
                 }
             }
         );
-        // if (this.signedIn) {
-        //     this.amplifyService.setAuthState({
-        //         state: 'SignIn',
-        //         user: this.user,
-        //     });
-        // }
 
         this.appPages = [
             {
@@ -72,7 +70,6 @@ export class AppComponent {
             //     icon: 'list',
             // },
         ];
-
         this.initializeApp();
     }
 

@@ -7,12 +7,16 @@ import { OrderService } from './../../services/order.service';
     styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
+    orderService$;
     constructor(private orderService: OrderService) {}
 
     ngOnInit() {
-        console.log(this.orderService);
-        this.orderService.getOrders().subscribe(orders => {
+        this.orderService$ = this.orderService.getOrders().subscribe(orders => {
             console.log(orders);
         });
+    }
+
+    ngOnDestroy() {
+        this.orderService$.unsubscribe();
     }
 }

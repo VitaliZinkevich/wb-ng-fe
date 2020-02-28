@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthPageRoutingModule } from './auth/auth-routing.module';
 import { AppComponent } from './app.component';
 import { SearchFormService } from './services/search-form.service';
 import { HotelsService } from './services/hotels.service';
@@ -24,6 +25,7 @@ import {
     LocationStrategy,
     PathLocationStrategy,
 } from '@angular/common';
+import { AuthPageModule } from './auth/auth.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -33,6 +35,8 @@ import {
         HttpClientModule,
         IonicModule.forRoot(),
         AppRoutingModule,
+        AuthPageRoutingModule,
+        AuthPageModule,
         BrowserAnimationsModule,
         BsDatepickerModule.forRoot(),
         AmplifyAngularModule,

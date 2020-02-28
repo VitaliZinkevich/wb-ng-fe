@@ -29,7 +29,7 @@ export class HomePage implements OnInit, OnDestroy {
     ) {
         this.authStateChange$ = this.amplifyService.authStateChange$.subscribe(
             authState => {
-                console.log('authStateChange$', authState);
+                console.log('authStateChange$ HOME', authState);
                 this.signedIn = authState.state === 'signedIn';
                 if (!authState.user) {
                     this.user = null;
@@ -38,7 +38,7 @@ export class HomePage implements OnInit, OnDestroy {
                 }
             }
         );
-        console.log(this.signedIn, this.user);
+        // console.log(this.signedIn, this.user);
     }
     public ngOnDestroy() {
         this.api$.unsubscribe();
